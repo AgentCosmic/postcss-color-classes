@@ -1,0 +1,3 @@
+@color-classes (primary, var(--color-primary));
+@color-classes grey10, var(--color-grey10);
+@color-classes ( green, #0f0 );

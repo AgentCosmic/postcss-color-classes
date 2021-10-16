@@ -1,0 +1,19 @@
+{
+	"name": "@daltontan/postcss-color-classes",
+	"version": "1.0.0",
+	"description": "Generate color utility classes",
+	"repository": "https://github.com/AgentCosmic/postcss-color-classes/",
+	"main": "index.js",
+	"author": "Dalton Tan",
+	"license": "ISC",
+	"scripts": {
+		"test": "postcss ./test.css"
+	},
+	"devDependencies": {
+		"postcss": "^8.3.9",
+		"postcss-cli": "^9.0.1"
+	},
+	"peerDependencies": {
+		"postcss": "^8.3.9"
+	}
+}
