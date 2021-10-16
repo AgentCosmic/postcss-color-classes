@@ -1,6 +1,6 @@
 {
 	"name": "@daltontan/postcss-color-classes",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Generate color utility classes",
 	"repository": "https://github.com/AgentCosmic/postcss-color-classes/",
 	"main": "index.js",
