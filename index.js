@@ -26,7 +26,8 @@ function colorPlugin(opts, atRule, { Rule, Declaration }) {
 		new Rule({ selector: `.color-${name}` }).append(
 			new Declaration({
 				prop: 'color',
-				value: color + ' !important',
+				value: color,
+				important: true,
 			})
 		)
 	)
@@ -34,7 +35,8 @@ function colorPlugin(opts, atRule, { Rule, Declaration }) {
 		new Rule({ selector: `.bg-${name}` }).append(
 			new Declaration({
 				prop: 'background-color',
-				value: color + ' !important',
+				value: color,
+				important: true,
 			})
 		)
 	)
@@ -42,7 +44,8 @@ function colorPlugin(opts, atRule, { Rule, Declaration }) {
 		new Rule({ selector: `.bd-${name}` }).append(
 			new Declaration({
 				prop: 'border-color',
-				value: color + ' !important',
+				value: color,
+				important: true,
 			})
 		)
 	)
