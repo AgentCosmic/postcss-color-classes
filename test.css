@@ -1,3 +1,7 @@
-@color-classes (primary, var(--color-primary));
-@color-classes grey10, var(--color-grey10);
-@color-classes ( green, #0f0 );
+@generate-color primary #34d {
+	light: tint(15);
+	dark: shade(20);
+	shadow: shade(30) alpha(0.2) no-bg no-color no-bd;
+}
+@generate-color danger red;
+@generate-color success green;

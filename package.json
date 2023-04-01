@@ -1,6 +1,6 @@
 {
 	"name": "@daltontan/postcss-color-classes",
-	"version": "1.0.2",
+	"version": "2.0.0",
 	"description": "Generate color utility classes",
 	"repository": "https://github.com/AgentCosmic/postcss-color-classes/",
 	"main": "index.js",
@@ -10,10 +10,11 @@
 		"test": "postcss ./test.css"
 	},
 	"devDependencies": {
-		"postcss": "^8.3.9",
-		"postcss-cli": "^9.0.1"
+		"postcss": "^8.0.0",
+		"postcss-cli": "^10.0.0"
 	},
 	"peerDependencies": {
-		"postcss": "^8.0.0"
+		"postcss": "^8.0.0",
+		"tinycolor2": "^1.6.0"
 	}
 }

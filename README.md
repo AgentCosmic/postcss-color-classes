@@ -1,23 +1,65 @@
 # PostCSS Color Classes
 
-Generate color utility classes for text, background, and border.
+Generate custom properties (variables) and classes for text, background, and border.
 
-Given the following rule `@color-classes $name, $color;` &mdash; where `$name` is the name of the class, and `$color` is the value of the color &mdash; it will produce the following classes:
-
-```css
-.color-$name { color: $color !important }
-.bg-$name { background-color: $color !important }
-.bd-$name { border-color: $color !important }
+The syntax for the plugin is:
+```
+@generate-color <name> <color> [{
+	<variation>: <tint(0-100)|shade(0-100)|alpha(0-1)|no-color|no-bg|no-bd|no-var...>
+	...
+}];
 ```
 
-Example:
+Each at-rule is used to define a color and its variations. The parameter accepted is the name of the color followed by
+the color code. The declarations in the body is used to define the color variations you want. The name will be used as
+the postfix. The accepted values are as follows:
 
+- **tint()** - make the color brighter.
+- **shade()** - make the color darker.
+- **alpha()** - set the alpha channel.
+- **no-color** - disable generating the color class.
+- **no-bg** - disable generating the background class.
+- **no-bd** - disable generating the border class.
+- **no-var** - disable generating the custom property (variable).
+
+## Example
+
+Input:
 ```css
-@color-classes primary, var(--color-primary);
-/* would produce: */
-.color-primary { color: var(--color-primary) !important }
-.bg-primary { background-color: var(--color-primary) !important }
-.bd-primary { border-color: var(--color-primary) !important }
+@generate-color primary #013370 {
+	light: tint(1);
+	shadow: shade(2) alpha(0.2) no-bg no-color no-bd;
+}
+```
+
+Output:
+```css
+:root {
+    --color-primary: #013370;
+    --color-primary-light: #013575;
+    --color-primary-shadow: rgba(1, 49, 107, 0.2)
+}
+.color-primary {
+    color: #013370 !important
+}
+.bg-primary {
+    background-color: #013370 !important
+}
+.bd-primary {
+    border-color: #013370 !important
+}
+.color-primary-light {
+    color: #013575 !important
+}
+.bg-primary-light {
+    background-color: #013575 !important
+}
+.bd-primary-light {
+    border-color: #013575 !important
+}
+.bd-primary-shadow {
+    border-color: rgba(1, 49, 107, 0.2) !important
+}
 ```
 
 ## Usage
@@ -36,10 +78,4 @@ module.exports = {
 		require('@daltontan/postcss-color-classes'),
 	]
 }
-```
-
-Add to your CSS file:
-
-```css
-@color-classes $name, $color;
 ```
