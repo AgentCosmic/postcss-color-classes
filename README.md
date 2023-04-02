@@ -5,8 +5,8 @@ Generate custom properties (variables) and classes for text, background, and bor
 The syntax for the plugin is:
 ```
 @generate-color <name> <color> [{
-	<variation>: <tint(0-100)|shade(0-100)|alpha(0-1)|no-color|no-bg|no-bd|no-var...>
-	...
+	<variation>: <tint(0-100)|shade(0-100)|alpha(0-1)|desaturate(0-100)|saturate(0-100)|no-color|no-bg|no-bd|no-var...>
+    ...
 }];
 ```
 
@@ -17,6 +17,8 @@ the postfix. The accepted values are as follows:
 - **tint()** - make the color brighter.
 - **shade()** - make the color darker.
 - **alpha()** - set the alpha channel.
+- **desaturate()** - decrease saturation.
+- **saturate()** - increase saturation.
 - **no-color** - disable generating the color class.
 - **no-bg** - disable generating the background class.
 - **no-bd** - disable generating the border class.

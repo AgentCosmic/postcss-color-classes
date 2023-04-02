@@ -1,7 +1,7 @@
 @generate-color primary #34d {
 	light: tint(15);
-	dark: shade(20);
-	shadow: shade(30) alpha(0.2) no-bg no-color no-bd;
+	dark: shade(20) saturate(10);
+	shadow: shade(30) alpha(0.2) desaturate(30) no-bg no-color no-bd;
 }
 @generate-color danger red;
 @generate-color success green;

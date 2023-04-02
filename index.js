@@ -1,7 +1,7 @@
 /**
  * Usage:
  * @generate-color <name> <color> [{
- *   <variation>: <tint([0-100])|shade([0-100])|alpha(0-1)|no-color|no-bg|no-bd|no-var...>
+ *   <variation>: <tint(0-100)|shade(0-100)|alpha(0-1)|desaturate(0-100)|saturate(0-100)|no-color|no-bg|no-bd|no-var...>
  *   ...
  * }];
  */
@@ -91,6 +91,10 @@ function colorPlugin(opts, atRule, varContainer, { Rule, result }) {
 				newColor = newColor.lighten(v);
 			} else if (fn === 'alpha') {
 				newColor = newColor.setAlpha(v);
+			} else if (fn === 'desaturate') {
+				newColor = newColor.desaturate(v);
+			} else if (fn === 'saturate') {
+				newColor = newColor.saturate(v);
 			} else if (fn === 'no-color') {
 				disabled.bg = false;
 			} else if (fn === 'no-bg') {
