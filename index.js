@@ -82,19 +82,19 @@ function colorPlugin(opts, atRule, varContainer, { Rule, result }) {
 	// for variations
 	atRule.walkDecls((decl) => {
 		const disabled = {};
-		let newColor = c;
+		const newColor = c.clone();
 		for (const [fn, amount] of parseArgs(decl.value)) {
 			const v = Number(amount);
 			if (fn === 'shade') {
-				newColor = newColor.darken(v);
+				newColor.darken(v);
 			} else if (fn === 'tint') {
-				newColor = newColor.lighten(v);
+				newColor.lighten(v);
 			} else if (fn === 'alpha') {
-				newColor = newColor.setAlpha(v);
+				newColor.setAlpha(v);
 			} else if (fn === 'desaturate') {
-				newColor = newColor.desaturate(v);
+				newColor.desaturate(v);
 			} else if (fn === 'saturate') {
-				newColor = newColor.saturate(v);
+				newColor.saturate(v);
 			} else if (fn === 'no-color') {
 				disabled.bg = false;
 			} else if (fn === 'no-bg') {
