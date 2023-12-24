@@ -1,6 +1,6 @@
 @generate-color primary #34d {
 	light: tint(15);
-	dark: shade(20) saturate(10);
+	dark: shade(20) saturate(10) no-var;
 	shadow: shade(30) alpha(0.2) desaturate(30) no-bg no-color no-bd;
 }
 @generate-color danger red;

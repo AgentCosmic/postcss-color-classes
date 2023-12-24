@@ -39,7 +39,9 @@ Output:
 :root {
     --color-primary: #013370;
     --color-primary-light: #013575;
+    --color-primary-light-rgb: 1 53 117;
     --color-primary-shadow: rgba(1, 49, 107, 0.2)
+    --color-primary-shadow-rgb: 1 49 107;
 }
 .color-primary {
     color: #013370 !important

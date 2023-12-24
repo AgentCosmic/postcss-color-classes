@@ -48,7 +48,7 @@ function colorPlugin(opts, atRule, varContainer, { Rule, result }) {
 			atRule.before(
 				new Rule({ selector: `.${opts.colorPrefix}${name}${postfix}` }).append({
 					prop: 'color',
-					value: color,
+					value: color.toString(),
 					important: true,
 				})
 			);
@@ -57,7 +57,7 @@ function colorPlugin(opts, atRule, varContainer, { Rule, result }) {
 			atRule.before(
 				new Rule({ selector: `.${opts.bgPrefix}${name}${postfix}` }).append({
 					prop: 'background-color',
-					value: color,
+					value: color.toString(),
 					important: true,
 				})
 			);
@@ -66,19 +66,21 @@ function colorPlugin(opts, atRule, varContainer, { Rule, result }) {
 			atRule.before(
 				new Rule({ selector: `.${opts.borderPrefix}${name}${postfix}` }).append({
 					prop: 'border-color',
-					value: color,
+					value: color.toString(),
 					important: true,
 				})
 			);
 		}
 		if (disabled.var !== false) {
-			varContainer.append({ prop: `--${opts.varPrefix}${name}${postfix}`, value: color });
+			varContainer.append({ prop: `--${opts.varPrefix}${name}${postfix}`, value: color.toString() });
+			const { r, g, b } = color.toRgb();
+			varContainer.append({ prop: `--${opts.varPrefix}${name}${postfix}-rgb`, value: `${r} ${g} ${b}` });
 		}
 	}
 
 	// start generating code
 	// for default color
-	generateCode(c.toString(), '', {});
+	generateCode(c, '', {});
 	// for variations
 	atRule.walkDecls((decl) => {
 		const disabled = {};
@@ -107,7 +109,7 @@ function colorPlugin(opts, atRule, varContainer, { Rule, result }) {
 				decl.warn(result, `Unrecognized property "${fn}"`);
 			}
 		}
-		generateCode(newColor.toString(), '-' + decl.prop, disabled);
+		generateCode(newColor, '-' + decl.prop, disabled);
 	});
 
 	// cleanup
